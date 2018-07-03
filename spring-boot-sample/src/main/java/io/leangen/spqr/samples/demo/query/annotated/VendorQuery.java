@@ -1,15 +1,16 @@
 package io.leangen.spqr.samples.demo.query.annotated;
 
-import io.leangen.graphql.annotations.GraphQLArgument;
-import io.leangen.graphql.annotations.GraphQLMutation;
-import io.leangen.graphql.annotations.GraphQLQuery;
-import io.leangen.spqr.samples.demo.dto.Vendor;
-import org.springframework.stereotype.Component;
-
 import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Component;
+
+import io.leangen.graphql.annotations.GraphQLArgument;
+import io.leangen.graphql.annotations.GraphQLMutation;
+import io.leangen.graphql.annotations.GraphQLQuery;
+import io.leangen.spqr.samples.demo.dto.Vendor;
 
 @Component
 public class VendorQuery {
@@ -66,8 +67,8 @@ public class VendorQuery {
      * @param name
      * @return
      */
-    @GraphQLQuery(name = "vendorsByName")
-    public Set<Vendor> getVendors(@GraphQLArgument(name = "name") String name){
+    @GraphQLQuery(name = "vendorsByName", description = "테스트")
+    public Set<Vendor> getVendors(@GraphQLArgument(name = "name", description = "이름을 입력하세요.") String name){
         return this.mockVendorStorage.stream()
                 .filter(vendor -> vendor.getName().equals(name))
                 .collect(Collectors.toSet());

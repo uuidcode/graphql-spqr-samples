@@ -1,15 +1,27 @@
 package io.leangen.spqr.samples.demo.dto;
 
-import io.leangen.graphql.annotations.GraphQLQuery;
-
 import java.util.HashSet;
 import java.util.Set;
+
+import io.leangen.graphql.annotations.GraphQLIgnore;
+import io.leangen.graphql.annotations.GraphQLQuery;
 
 public class Vendor {
     private Long id;
     private String name;
     private Address address;
     private Set<ProductInStock> productsInStock;
+    private String title;
+
+    @GraphQLIgnore
+    public String getTitle() {
+        return this.title;
+    }
+
+    public Vendor setTitle(String title) {
+        this.title = title;
+        return this;
+    }
 
     public Vendor(){
         productsInStock = new HashSet<ProductInStock>();

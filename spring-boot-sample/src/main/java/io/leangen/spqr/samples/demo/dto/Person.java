@@ -6,7 +6,7 @@ public class Person {
     private String firstName;
     private String lastName;
     
-    @GraphQLQuery(name = "firstName")
+    @GraphQLQuery(name = "firstName", description = "이름입니다.")
     public String getFirstName() {
         return firstName;
     }
